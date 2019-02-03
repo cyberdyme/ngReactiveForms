@@ -1,0 +1,45 @@
+<div>
+  <form [formGroup]="model">
+    <div fxLayout="column" fxLayoutGap="8px">
+      <div>
+        <label>FirstName:</label>
+        <input type="text" formControlName="firstName" required>
+      </div>
+
+      <div>
+        <label>Surname:</label>
+        <input type="text" formControlName="lastName" required>
+      </div>
+
+      <ng-container *ngTemplateOutlet="addressTemplate; context: { modelProperty: model };"></ng-container>
+    </div>
+  </form>
+</div>
+
+<ng-template #addressTemplate let-modelToUse='modelProperty'>
+  <div [formGroup]="modelToUse">
+    <div formGroupName="address" fxLayout="column" fxLayoutGap="8px">
+      <h3>Address</h3>
+
+      <div>
+        <label>Street:</label>
+        <input type="text" formControlName="street">
+      </div>
+
+      <div>
+        <label>City:</label>
+        <input type="text" formControlName="city">
+      </div>
+
+      <div>
+        <label>State:</label>
+        <input type="text" formControlName="state">
+      </div>
+
+      <div>
+        <label>Zip Code:</label>
+        <input type="text" formControlName="zip">
+      </div>
+    </div>
+  </div>
+</ng-template>
